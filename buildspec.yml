@@ -6,10 +6,6 @@ phases:
     commands:
       - mvn clean install
       - echo Logging in to Amazon ECR...
-      - aws --version
-      - apt-get update -y
-      - apt-get install -y awscli
-      - aws configure list
       - $(aws ecr get-login --region eu-north-1 --no-include-email)
       - REPOSITORY_URI=747610744334.dkr.ecr.eu-north-1.amazonaws.com/spring-sample
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
